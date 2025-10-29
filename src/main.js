@@ -3,6 +3,7 @@ const handle = async () => {
   const result = JSON.stringify({
     status: response.status,
     statusText: response.statusText,
+    headers: Array.from(response.headers.entries()),
     text: await response.text()
   }, undefined, 4);
 
@@ -12,6 +13,7 @@ const handle = async () => {
   const resultUserAgent = JSON.stringify({
     status: responseUserAgent.status,
     statusText: responseUserAgent.statusText,
+    headers: Array.from(responseUserAgent.headers.entries()),
     text: await responseUserAgent.text()
   }, undefined, 4);
   return new Response(`Response without User-Agent: ${result}\nResponse with User-Agent: ${resultUserAgent}`);
